@@ -1,5 +1,8 @@
 <?php 
 
+$nombre = readline("Introduce el nombre del empleado: ");
+$sueldo = readline ("Introduce el sueldo del empleado: ");
+
 class Empleado{
     private $nombre;
     private $sueldo;
@@ -12,19 +15,19 @@ class Empleado{
 
     public function getValue(){
 
-        echo "Nombre del empleado: $this->nombre <br>" ;
-        echo "Sueldo del empleado: $this->sueldo <br>";
+        echo "Nombre del empleado: $this->nombre \n" ;
+        echo "Sueldo del empleado: $this->sueldo \n";
 
         if ($this->sueldo > 6000) {
-            echo "Debe pagar impuestos.<br><br>";
+            echo "Debe pagar impuestos. \n";
         } else {
-            echo "No debe pagar impuestos.<br><br>";
+            echo "No debe pagar impuestos. \n";
         }
     }
 }
 
 $Sergi = new Empleado;
-$Sergi->setValue('Sergi', '40000');
+$Sergi->setValue( $nombre, $sueldo);
 $Sergi->getValue();
 
 ?>
