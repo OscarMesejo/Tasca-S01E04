@@ -1,43 +1,61 @@
 <?php
 
-abstract class Shape{
-    public $ample;
-    public $alt;
+class Triangulo{
 
-    public function __construct($ample, $alt){
-        $this -> ample = $ample;
+    private $ancho;
+    private $alt;
+
+    public function __construct ($ancho, $alt){
+        $this -> ancho = $ancho;
         $this -> alt = $alt;
     }
-
-    
-
+    public function areaTriangulo(){
+        return ($this -> ancho * $this-> alt) / 2; 
+    }
 }
 
-class Triangle extends Shape{
-        public function area(){
-            return ($this -> ample * $this -> alt);
-        }
-        
+class Rectangulo{
+    private $ancho;
+    private $alt;
+
+    public function __construct ($ancho, $alt){
+        $this -> ancho = $ancho;
+        $this -> alt = $alt;
+    }    
+    public function areaRectangulo(){
+        return ($this -> ancho * $this -> alt);
+
+    }
 }
 
-class Rectangle extends Shape{
-    public function area(){
-            return ($this -> ample * $this -> alt);
-        }
+/* pedimos que se introduzcan los valores de ancho y altura por consola */
+
+$ancho = readline("Introduce el ancho: ");
+$alt = readline("Introduce la altura: ");
+
+class Shape{
+    private $triangulo;
+    private $rectangulo;
+
+    public function __construct($ancho, $alt){
+        $this -> triangulo = new Triangulo($ancho, $alt);
+        $this -> rectangulo = new Rectangulo($ancho, $alt);
+    }
+
+    public function areaTriangulo(){
+        return $this -> triangulo -> areaTriangulo();
+    }
+
+    public function areaRectangulo(){
+        return $this -> rectangulo -> areaRectangulo();
+    }
 }
 
-/* vamos apedir por consola que se introduzcan los valores */
+$shape = new Shape ($ancho, $alt);
+/* $shape -> areaTriangulo();
+$shape -> areaRectangulo(); */
 
-echo "Introduce el ancho: ";
-$ample = readline();
-echo "Introduce la altura: ";
-$alt = readline();
-
- $triangulo = new Triangle($ample, $alt);
- echo "El área del triángulo es : " . $triangulo -> area() . "\n"; 
- 
- $rectangulo = new Rectangle($ample, $alt);
- echo "El área del rectángulo es : " . $rectangulo -> area() . "\n";
-
+echo "El área del triángulo es: " . $shape -> areaTriangulo() . "\n";
+echo "El área del rectángulo es: " . $shape -> areaRectangulo() . "\n";
 
 ?>
